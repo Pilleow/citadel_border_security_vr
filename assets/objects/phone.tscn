@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccwuqi2opi6cs"]
+
+[ext_resource type="Script" uid="uid://cvfosi3lyt3xa" path="res://assets/objects/phone.gd" id="1_1pef3"]
+[ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_5ns4y"]
+[ext_resource type="AudioStream" uid="uid://bmq1irlpqrnhr" path="res://assets/sounds/phone/on_level_1.wav" id="3_ykdt5"]
+[ext_resource type="AudioStream" uid="uid://c61j6nijbhnd8" path="res://assets/sounds/sfx/phone_ring.mp3" id="4_35qjl"]
+[ext_resource type="AudioStream" uid="uid://hnhkh82h0ma3" path="res://assets/sounds/sfx/phone_dock.mp3" id="5_ykdt5"]
+[ext_resource type="AudioStream" uid="uid://biuvll4dqskkn" path="res://assets/sounds/sfx/phone_undock.mp3" id="6_jpdhv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6j7s"]
+albedo_color = Color(0.3948, 0.64708, 0.84, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ns4y"]
+albedo_color = Color(0.282, 0.4622, 0.6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ns4y"]
+size = Vector3(0.05, 0.0186689, 0.144)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnvgc"]
+size = Vector3(0.05, 0.0405845, 0.0387969)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1pef3"]
+size = Vector3(0.153808, 0.0997315, 0.136475)
+
+[node name="Phone" type="Node3D"]
+script = ExtResource("1_1pef3")
+
+[node name="Base" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Base"]
+size = Vector3(0.15, 0.1, 0.2)
+material = SubResource("StandardMaterial3D_l6j7s")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Base"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.0731693, 0.0514675, 0)
+operation = 2
+size = Vector3(0.15, 0.1, 0.25)
+material = SubResource("StandardMaterial3D_l6j7s")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Base"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.0279914, 0.0639173, 0.039413)
+operation = 2
+size = Vector3(0.25, 0.1, 0.06)
+material = SubResource("StandardMaterial3D_l6j7s")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Base"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0.0469111, 0.112888, 0.039413)
+operation = 2
+size = Vector3(0.25, 0.1, 0.06)
+material = SubResource("StandardMaterial3D_l6j7s")
+
+[node name="PhoneHead" parent="." instance=ExtResource("1_5ns4y")]
+
+[node name="Marker3D" type="Marker3D" parent="PhoneHead/GrabPoints" index="0"]
+transform = Transform3D(0.801087, -0.0339713, 0.597583, 0.551868, 0.428462, -0.715446, -0.231737, 0.902921, 0.361983, 0.0808549, 0.0754664, 0.0303848)
+
+[node name="Phone" type="CSGCombiner3D" parent="PhoneHead"]
+transform = Transform3D(-4.98699e-08, 0.575096, -1.27643, 2.51382e-08, 1.27643, 0.575096, 1.4, -2.43368e-09, -5.57944e-08, 0.0210401, 0.0280157, 0.0518969)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PhoneHead/Phone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00622201, -1.86265e-09)
+size = Vector3(0.05, 0.040625, 0.143555)
+material = SubResource("StandardMaterial3D_5ns4y")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PhoneHead/Phone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042534, 0)
+operation = 2
+size = Vector3(0.1, 0.1, 0.0654297)
+material = SubResource("StandardMaterial3D_5ns4y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneHead"]
+transform = Transform3D(-6.11959e-08, 0.57612, -1.27596, 0, 1.27596, 0.57612, 1.4, 2.5183e-08, -5.57742e-08, 0.0280511, 0.0436073, 0.0519021)
+shape = SubResource("BoxShape3D_5ns4y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PhoneHead"]
+transform = Transform3D(-6.11959e-08, 0.57612, -1.27596, 0, 1.27596, 0.57612, 1.4, 2.5183e-08, -5.57742e-08, 0.071483, 0.0119741, 0.0519021)
+shape = SubResource("BoxShape3D_xnvgc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="PhoneHead"]
+transform = Transform3D(-6.11959e-08, 0.57612, -1.27596, 0, 1.27596, 0.57612, 1.4, 2.5183e-08, -5.57742e-08, -0.0240176, 0.0555357, 0.0519021)
+shape = SubResource("BoxShape3D_xnvgc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PhoneHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0544364, 0.0290089, 0)
+stream = ExtResource("3_ykdt5")
+volume_db = -16.612
+max_db = 0.135
+max_distance = 0.6
+
+[node name="DockedArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DockedArea"]
+transform = Transform3D(0.759737, 0.650231, 0, -0.650231, 0.759737, 0, 0, 0, 1, 0.00456401, 0.0263048, 0.0502845)
+shape = SubResource("BoxShape3D_1pef3")
+
+[node name="RingAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0318267, 0.00682655, -0.0604082)
+stream = ExtResource("4_35qjl")
+volume_db = -10.0
+unit_size = 5.0
+max_db = -5.0
+autoplay = true
+parameters/looping = true
+
+[node name="DockAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0318267, 0.00682655, -0.0604082)
+stream = ExtResource("5_ykdt5")
+volume_db = -10.0
+unit_size = 5.0
+max_db = -5.0
+
+[node name="UndockAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0318267, 0.00682655, -0.0604082)
+stream = ExtResource("6_jpdhv")
+volume_db = -10.0
+unit_size = 5.0
+max_db = -5.0
+
+[connection signal="body_entered" from="DockedArea" to="." method="_on_docked_area_body_entered"]
+
+[editable path="PhoneHead"]

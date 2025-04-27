@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3 uid="uid://brpvs6pyjhxfg"]
+
+[resource]
+font_names = PackedStringArray("Sylfaen")
+oversampling = 3.0

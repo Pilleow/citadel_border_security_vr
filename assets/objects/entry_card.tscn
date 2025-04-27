@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=3 uid="uid://pgsw4ye8uj82"]
+
+[ext_resource type="Script" uid="uid://sg24kpmdbtf7" path="res://assets/objects/entry_card.gd" id="1_4h3gr"]
+[ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_h4fnl"]
+[ext_resource type="SystemFont" uid="uid://brpvs6pyjhxfg" path="res://assets/fonts/entry_card_font.tres" id="3_nkdrl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4h3gr"]
+size = Vector3(0.12, 0.01, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4fnl"]
+albedo_color = Color(0.88, 0.870613, 0.7392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4h3gr"]
+material = SubResource("StandardMaterial3D_h4fnl")
+size = Vector3(0.12, 0.01, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0mp3"]
+size = Vector3(0.1, 0.01, 0.18)
+
+[node name="EntryCard" type="Node3D"]
+script = ExtResource("1_4h3gr")
+
+[node name="Pickup" parent="." instance=ExtResource("1_h4fnl")]
+mass = 0.1
+freeze_mode = 1
+
+[node name="Marker3D" type="Marker3D" parent="Pickup/GrabPoints" index="0"]
+transform = Transform3D(-1.95953e-08, 0.258819, 0.965926, 9.57573e-08, 0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, 0.00468006, -0.106958)
+
+[node name="Marker3D2" type="Marker3D" parent="Pickup/GrabPoints" index="1"]
+transform = Transform3D(-1.95953e-08, 0.258819, 0.965926, 9.57573e-08, 0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, 0.00468006, 0.107)
+
+[node name="Marker3D3" type="Marker3D" parent="Pickup/GrabPoints" index="2"]
+transform = Transform3D(5.7657e-08, 0.258819, 0.965926, -5.20459e-08, -0.965926, 0.258819, 1, -6.51952e-08, -4.2222e-08, 0, -0.00468006, -0.106958)
+
+[node name="Marker3D4" type="Marker3D" parent="Pickup/GrabPoints" index="3"]
+transform = Transform3D(-9.37637e-08, 0.258819, 0.965926, -1.39469e-07, -0.965926, 0.258819, 1, -1.10449e-07, 1.26666e-07, 0, -0.00468006, 0.107)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22251e-05, 0)
+shape = SubResource("BoxShape3D_4h3gr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pickup"]
+mesh = SubResource("BoxMesh_4h3gr")
+
+[node name="TopText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.042, 0.00519583, 0)
+pixel_size = 0.0005
+modulate = Color(0.0663, 0.08788, 0.39, 1)
+text = "CITADEL EXTERNAL RELATIONS OFFICE
+Provisional Entry Authorization Card"
+font = ExtResource("3_nkdrl")
+font_size = 20
+outline_size = 0
+
+[node name="NameText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.0264628, 0.00519583, 0.091834)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "Name: [First Name] [Last Name]
+Date of Issue: [Date]
+Issuing Authority: Citadel External Embassy
+Authorization Number: CXR-###########"
+font = ExtResource("3_nkdrl")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="NameText2" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.0202525, 0.00519583, 4.56423e-05)
+pixel_size = 0.0005
+modulate = Color(0.259294, 0.259294, 0.259294, 1)
+text = "Apply Final Adjudication Stamp Below"
+font = ExtResource("3_nkdrl")
+font_size = 12
+outline_size = 0
+vertical_alignment = 0
+
+[node name="DisclaimerText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.0235688, 0.00519583, 0.091834)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+font = ExtResource("3_nkdrl")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 2
+width = 371.94
+
+[node name="DisclaimerText2" type="Label3D" parent="Pickup"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.0159771, -0.006, -0.000867732)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "All entrants are subject to biometric verification and health screening upon arrival. Compliance with all Citadel Laws and Ordinances is mandatory. Final admission decision rests solely with the Border Security Officer on duty. Entry may be revoked at any time without prior notice, for reasons of security, public health, or administrative discretion."
+font = ExtResource("3_nkdrl")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 3
+vertical_alignment = 0
+autowrap_mode = 2
+width = 373.325
+
+[node name="DisclaimerText4" type="Label3D" parent="Pickup"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -0.0144433, -0.006, -0.000867732)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "INSTRUCTIONS TO HOLDER: Present this card at the designated Border Checkpoint along with any required secondary identification (e.g., Passport, Health Screening Report). Entry authorization is valid for 30 days from the date of issue. Expired cards will be rejected without appeal. Unauthorized alteration, duplication, or transfer of this card is a violation of Citadel Security Protocol 12-A. Loss or theft of this card must be reported immediately to the nearest External Relations Outpost."
+font = ExtResource("3_nkdrl")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 3
+vertical_alignment = 0
+autowrap_mode = 2
+width = 373.325
+
+[node name="DisclaimerText3" type="Label3D" parent="Pickup"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.0410488, -0.006, -0.000867732)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "Failure to comply with inspection procedures will result in immediate denial of entry and potential blacklisting from future applications. Possession of an Entry Authorization Card does not guarantee admission into Citadel."
+font = ExtResource("3_nkdrl")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 3
+vertical_alignment = 0
+autowrap_mode = 2
+width = 373.325
+
+[node name="Denied" type="Label3D" parent="Pickup"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.0443214, 0.00519583, 0)
+pixel_size = 0.0005
+modulate = Color(0.92, 0, 0, 0.784314)
+text = "DENIED"
+font = ExtResource("3_nkdrl")
+font_size = 70
+outline_size = 0
+
+[node name="Accepted" type="Label3D" parent="Pickup"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.0443214, 0.00519583, 0)
+pixel_size = 0.0005
+modulate = Color(0.147333, 0.68, 0, 0.784314)
+text = "ACCEPTED"
+font = ExtResource("3_nkdrl")
+font_size = 60
+outline_size = 0
+
+[node name="StampArea" type="Area3D" parent="Pickup"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup/StampArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00418732, 0)
+shape = SubResource("BoxShape3D_t0mp3")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+
+[editable path="Pickup"]

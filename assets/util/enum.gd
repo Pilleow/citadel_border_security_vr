@@ -1,0 +1,58 @@
+extends Node
+
+enum STAMPS {
+	ACCEPTED, 
+	DENIED, 
+	NONE
+}
+
+enum MEDICAL_STAMPS {
+	CCC,
+	NHD,
+	MDTF,
+	NONE
+}
+
+enum MEDICAL_STATUS {
+	CLEARED,
+	FLAGGED,
+	HAZARDOUS,
+	NONE
+}
+
+enum PERSONSTATES {
+	ON_START,
+	APPROACHING_GLASS,
+	ON_GLASS,
+	ENTERING,
+	ENTERED,
+	LEAVING,
+	LEFT,
+	DANGER,
+	INNOCENT
+}
+
+enum PERSONCHARACTER {
+	COMPLIANT,
+	AGGRESSIVE
+}
+
+enum PERSON_SPEAKING_SFX {
+	GREETING,
+	ON_ACCEPT,
+	ON_ALARM_AGGRESSIVE,
+	ON_ALARM_INNOCENT,
+	ON_DENY,
+	ON_FORGOT_TO_GIVE,
+	ON_MISSING_DOCUMENT
+}
+
+enum PERSON_SPEAKING_SUBFOLDER {
+	MIKE_113
+}
+
+func get_speaking_subfolder(sp: Enum.PERSON_SPEAKING_SUBFOLDER):
+	match sp:
+		Enum.PERSON_SPEAKING_SUBFOLDER.MIKE_113:
+			return "mike_p113/"
+	push_error("Speaking subfolder not recognized: " + str(sp))

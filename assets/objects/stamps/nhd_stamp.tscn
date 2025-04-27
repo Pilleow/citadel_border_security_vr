@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwlo1co6lvvoe"]
+
+[ext_resource type="Texture2D" uid="uid://bqayl865himu0" path="res://assets/graphics/sprites/stamp_doctor_1.png" id="1_b11yu"]
+
+[sub_resource type="SystemFont" id="SystemFont_36afu"]
+font_names = PackedStringArray("Georgia")
+subpixel_positioning = 0
+oversampling = 3.0
+
+[node name="NHDstamp" type="Node3D"]
+transform = Transform3D(0.999932, 5.11136e-10, 0.0116934, -5.11136e-10, 1, -2.9884e-12, -0.0116934, -2.9884e-12, 0.999932, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.82, 0, 0, 0, -3.58433e-08, 0.82, 0, -0.82, -3.58433e-08, -0.0300898, 0.000351803, 0.000742346)
+pixel_size = 0.0001
+texture = ExtResource("1_b11yu")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.010517, 0, 0.00750114)
+pixel_size = 0.0005
+modulate = Color(0.125911, 0.125911, 0.125911, 1)
+text = "National Health 
+Department"
+font = SubResource("SystemFont_36afu")
+font_size = 17
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00383113, 0, -0.0105505)
+pixel_size = 0.0005
+modulate = Color(0.125911, 0.125911, 0.125911, 1)
+text = "Dr Steven Johnsenberg
+Provider No. 195827NH"
+font = SubResource("SystemFont_36afu")
+font_size = 10
+outline_size = 0
+horizontal_alignment = 0

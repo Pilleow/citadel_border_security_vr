@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://di0pbeqjtb34s"]
+
+[ext_resource type="Texture2D" uid="uid://c577pxqegquvv" path="res://assets/graphics/sprites/stamp_doctor_3.png" id="1_tmev4"]
+
+[sub_resource type="SystemFont" id="SystemFont_mg4bu"]
+font_names = PackedStringArray("Georgia")
+subpixel_positioning = 0
+oversampling = 3.0
+
+[node name="MDTFstamp" type="Node3D"]
+transform = Transform3D(0.999541, 1.32497e-09, 0.0303117, -1.32497e-09, 1, -2.0085e-11, -0.0303117, -2.0085e-11, 0.999541, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.66, 0, 0, 0, -2.88495e-08, 0.66, 0, -0.66, -2.88495e-08, -0.0387813, 0.000351803, 0.00174522)
+pixel_size = 0.0001
+texture = ExtResource("1_tmev4")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(0.86, 0, 0, 0, -3.75918e-08, 0.86, 0, -0.86, -3.75918e-08, -0.025, 0, -0.004)
+pixel_size = 0.0005
+modulate = Color(0.12549, 0.12549, 0.12549, 1)
+text = "Medical Diagnosis 
+& Treatment Facility"
+font = SubResource("SystemFont_mg4bu")
+font_size = 20
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.042301, 0, 0.0121812)
+pixel_size = 0.0005
+modulate = Color(0.12549, 0.12549, 0.12549, 1)
+text = "Dr Alexander Stephanovicz
+Provider No. 185726VX"
+font = SubResource("SystemFont_mg4bu")
+font_size = 11
+outline_size = 0
+horizontal_alignment = 2

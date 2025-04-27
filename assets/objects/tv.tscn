@@ -1,0 +1,128 @@
+[gd_scene load_steps=16 format=3 uid="uid://dfg517i30j7kl"]
+
+[ext_resource type="Texture2D" uid="uid://dofs1pr6qjvay" path="res://assets/graphics/images/news_bg.png" id="1_0hthw"]
+[ext_resource type="Script" uid="uid://betotwtyw5rcd" path="res://assets/objects/tv.gd" id="1_rt57q"]
+[ext_resource type="Texture2D" uid="uid://dorh76mup1341" path="res://assets/graphics/images/news_intro.jpg" id="2_lgb3n"]
+[ext_resource type="AudioStream" uid="uid://b2bdeki5n2pq7" path="res://assets/sounds/sfx/crt_tv_static_noise.mp3" id="2_td77p"]
+[ext_resource type="AudioStream" uid="uid://beq06k7t68ugg" path="res://assets/sounds/sfx/news_opening_theme.mp3" id="4_ytllg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hthw"]
+albedo_color = Color(0.71, 0.63048, 0.5396, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu318"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td77p"]
+albedo_color = Color(0.88, 0.956, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgb3n"]
+material = SubResource("StandardMaterial3D_td77p")
+size = Vector3(0.2, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt57q"]
+albedo_color = Color(0.33, 0.23892, 0.1023, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_td77p"]
+material = SubResource("StandardMaterial3D_rt57q")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eu318"]
+top_radius = 0.005
+bottom_radius = 0.01
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgb3n"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0hthw"]
+material = SubResource("StandardMaterial3D_lgb3n")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.02
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_td77p"]
+
+[node name="TV" type="Node3D"]
+script = ExtResource("1_rt57q")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(1, 1, 1.45801)
+material = SubResource("StandardMaterial3D_0hthw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50528, -0.00314331, 0)
+operation = 2
+size = Vector3(0.164978, 0.825195, 1.13574)
+material = SubResource("StandardMaterial3D_eu318")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00245e-05, 0.504009, 0)
+mesh = SubResource("BoxMesh_lgb3n")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.984808, -0.173648, 0, 0.17101, 0.969846, 0.173648, -0.0301537, -0.17101, 0.984808, 0.374262, -0.600268, 0.60311)
+mesh = SubResource("CylinderMesh_td77p")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0301537, -0.17101, 0.984808, 0.17101, 0.969846, 0.173648, -0.984808, 0.173648, -4.48534e-08, 0.374262, -0.600268, -0.602399)
+mesh = SubResource("CylinderMesh_td77p")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.984808, 0.173648, -8.65249e-08, 0.17101, 0.969846, 0.173648, 0.0301538, 0.17101, -0.984808, -0.368216, -0.600268, -0.602399)
+mesh = SubResource("CylinderMesh_td77p")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0301538, 0.17101, -0.984808, 0.17101, 0.969846, 0.173648, 0.984808, -0.173648, 1.30915e-07, -0.368216, -0.600268, 0.597446)
+mesh = SubResource("CylinderMesh_td77p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.245, 0, 0, 0, 1.0782, 0.6225, 0, -0.6225, 1.0782, 3.99649e-05, 0.924571, -0.22905)
+mesh = SubResource("CylinderMesh_eu318")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495606, 0)
+mesh = SubResource("CylinderMesh_0hthw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.245, 0, 0, 0, 1.0782, -0.6225, 0, 0.6225, 1.0782, 3.99649e-05, 0.915187, 0.21849)
+mesh = SubResource("CylinderMesh_eu318")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495606, 0)
+mesh = SubResource("CylinderMesh_0hthw")
+skeleton = NodePath("../..")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_td77p")
+
+[node name="newsBG" type="Sprite3D" parent="."]
+transform = Transform3D(-1.03229e-08, 0, 0.305, 0, 0.305, 0, -0.23616, 0, -1.3332e-08, 0.427575, 0, 0)
+texture = ExtResource("1_0hthw")
+
+[node name="newsSound" type="AudioStreamPlayer3D" parent="newsBG"]
+transform = Transform3D(-1.85092e-07, 0, -4.23442, 0, 3.27869, 0, 3.27869, 0, -1.43316e-07, 7.76053e-08, 0, -1.37468)
+stream = ExtResource("4_ytllg")
+volume_db = -5.0
+max_db = -3.0
+
+[node name="newsIntro" type="Sprite3D" parent="."]
+transform = Transform3D(-4.02154e-09, 0, 0.305, 0, 0.122, 0, -0.0920021, 0, -1.3332e-08, 0.43587, 0, 0)
+texture = ExtResource("2_lgb3n")
+
+[node name="newsIntroSFX" type="AudioStreamPlayer3D" parent="newsIntro"]
+transform = Transform3D(-4.75113e-07, 0, -10.8693, 0, 8.19672, 0, 3.27869, 0, -1.43316e-07, 2.03146e-07, 0, -1.40188)
+stream = ExtResource("4_ytllg")
+volume_db = -20.0
+max_db = -10.0
+
+[node name="CRT_tv_static" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00829583, 0, 0)
+stream = ExtResource("2_td77p")
+volume_db = -15.0
+max_db = -5.0
+autoplay = true
+parameters/looping = true

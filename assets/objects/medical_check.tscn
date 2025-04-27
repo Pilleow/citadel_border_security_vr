@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://dja0cxaotj1ml"]
+
+[ext_resource type="Script" uid="uid://duf84t4u3r0la" path="res://assets/objects/medical_check.gd" id="1_ccmxn"]
+[ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="2_ccmxn"]
+[ext_resource type="SystemFont" uid="uid://dvj57828q8e1h" path="res://assets/fonts/medical_font.tres" id="3_ccmxn"]
+[ext_resource type="PackedScene" uid="uid://dwlo1co6lvvoe" path="res://assets/objects/stamps/nhd_stamp.tscn" id="4_7gxhq"]
+[ext_resource type="PackedScene" uid="uid://wrlhytva4m50" path="res://assets/objects/stamps/ccc_stamp.tscn" id="4_ccmxn"]
+[ext_resource type="PackedScene" uid="uid://di0pbeqjtb34s" path="res://assets/objects/stamps/mdtf_stamp.tscn" id="5_d7v3n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4h3gr"]
+size = Vector3(0.21, 0.01, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4fnl"]
+albedo_color = Color(0.88, 0.870613, 0.7392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v16ne"]
+material = SubResource("StandardMaterial3D_h4fnl")
+size = Vector3(0.21, 0.01, 0.14)
+
+[node name="MedicalCheck" type="Node3D"]
+script = ExtResource("1_ccmxn")
+
+[node name="Pickup" parent="." instance=ExtResource("2_ccmxn")]
+mass = 0.1
+freeze_mode = 1
+
+[node name="Marker3D" type="Marker3D" parent="Pickup/GrabPoints" index="0"]
+transform = Transform3D(-1.95953e-08, 0.258819, 0.965926, 9.57573e-08, 0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, 0.00484854, -0.0706584)
+
+[node name="Marker3D2" type="Marker3D" parent="Pickup/GrabPoints" index="1"]
+transform = Transform3D(-1.95953e-08, 0.258819, 0.965926, 9.57573e-08, 0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, 0.00484854, 0.0717061)
+
+[node name="Marker3D3" type="Marker3D" parent="Pickup/GrabPoints" index="2"]
+transform = Transform3D(6.48487e-08, 0.258819, -0.965926, -7.31306e-08, -0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, -0.00586347, -0.0706584)
+
+[node name="Marker3D4" type="Marker3D" parent="Pickup/GrabPoints" index="3"]
+transform = Transform3D(6.48487e-08, 0.258819, -0.965926, -7.31306e-08, -0.965926, -0.258819, -1, 8.74228e-08, -4.37114e-08, 0, -0.00586347, 0.0717061)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22251e-05, 0)
+shape = SubResource("BoxShape3D_4h3gr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pickup"]
+mesh = SubResource("BoxMesh_v16ne")
+
+[node name="TopText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.089, 0.006, 0)
+pixel_size = 0.0005
+modulate = Color(0.0962, 0.26, 0.24089, 1)
+text = "visitor medical 
+screening report"
+font = ExtResource("3_ccmxn")
+font_size = 20
+outline_size = 0
+vertical_alignment = 0
+uppercase = true
+
+[node name="NameText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.053, 0.006, 0.056)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "Name: First and last name
+Date of Screening: DD/MM/YYYY
+Screening ID: 009999999999999"
+font = ExtResource("3_ccmxn")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 264.33
+
+[node name="MedicalCleared" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.0143084, 0.006, 0.0643498)
+visible = false
+pixel_size = 0.0005
+modulate = Color(0, 0.25, 0.1875, 1)
+text = "Cleared: No anomalies detected. Visitor poses no known health risk.
+
+"
+font = ExtResource("3_ccmxn")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 250.0
+
+[node name="MedicalFlagged" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.0143084, 0.006, 0.0643498)
+visible = false
+pixel_size = 0.0005
+modulate = Color(0.31, 0.134333, 0, 1)
+text = "Flagged: Potential biological anomaly detected. Visitor requires further examination."
+font = ExtResource("3_ccmxn")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 250.0
+
+[node name="MedicalHazardous" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, -0.0143084, 0.006, 0.0643498)
+pixel_size = 0.0005
+modulate = Color(0.36, 0, 0, 1)
+text = "Hazardous: Contamination confirmed. Visitor is highly toxic and classified as a direct threat. Immediate denial of entry required. Notify Compliance Authority without delay."
+font = ExtResource("3_ccmxn")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 250.0
+
+[node name="DisclaimerText" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.063, 0.006, 0)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "This report is generated automatically by Citadel BioScan Systems. Manual review is recommended in case of inconsistencies. Health data is subject to Tier-7 Data Privacy Regulations, subsection 19.4. Unauthorized disclosure, alteration, or destruction of screening records is punishable by law under the Citadel Unified Security Act.
+By entering Citadel territory, individuals consent to full biological assessment and ongoing monitoring."
+font = ExtResource("3_ccmxn")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 3
+vertical_alignment = 0
+autowrap_mode = 3
+justification_flags = 99
+width = 250.0
+
+[node name="DisclaimerText2" type="Label3D" parent="Pickup"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.0292828, 0.006, 0)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "All visitors must pass full health screening to be eligible for entry into Citadel. Hazardous individuals require immediate isolation, and must not be allowed to interact with the general population. Failure to report a hazardous individual is classified as Dereliction of Public Duty."
+font = ExtResource("3_ccmxn")
+font_size = 8
+outline_size = 0
+horizontal_alignment = 3
+vertical_alignment = 0
+autowrap_mode = 3
+justification_flags = 99
+width = 250.0
+
+[node name="NHDstamp" parent="Pickup" instance=ExtResource("4_7gxhq")]
+transform = Transform3D(-0.147408, -1.12404e-10, 0.786303, -6.41415e-10, 0.8, -5.88312e-12, -0.786303, -6.31517e-10, -0.147408, 0.0174436, 0.006, -0.0230769)
+
+[node name="CCCstamp" parent="Pickup" instance=ExtResource("4_ccmxn")]
+transform = Transform3D(-0.114255, 1.2788e-10, 0.791799, 8.27528e-10, 0.8, -9.79365e-12, -0.791799, 8.17646e-10, -0.114255, 0.0174436, 0.006, -0.0230769)
+visible = false
+
+[node name="MDTFstamp" parent="Pickup" instance=ExtResource("5_d7v3n")]
+transform = Transform3D(-0.138203, -3.9408e-11, 0.787972, -2.32531e-10, 0.8, -7.73371e-13, -0.787972, -2.29169e-10, -0.138203, 0.0174436, 0.006, -0.0230769)
+visible = false
+
+[node name="MedicalCheckDocument" type="Area3D" parent="Pickup"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pickup/MedicalCheckDocument"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22251e-05, 0)
+shape = SubResource("BoxShape3D_4h3gr")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+
+[editable path="Pickup"]

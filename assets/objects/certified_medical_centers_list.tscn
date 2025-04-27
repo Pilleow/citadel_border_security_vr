@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cr3rflym50fh2"]
+
+[ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_mg4bu"]
+[ext_resource type="SystemFont" uid="uid://xdaxvye2k4cw" path="res://assets/fonts/desk_font.tres" id="2_36afu"]
+[ext_resource type="PackedScene" uid="uid://dwlo1co6lvvoe" path="res://assets/objects/stamps/nhd_stamp.tscn" id="3_mg4bu"]
+[ext_resource type="PackedScene" uid="uid://wrlhytva4m50" path="res://assets/objects/stamps/ccc_stamp.tscn" id="4_mg4bu"]
+[ext_resource type="PackedScene" uid="uid://di0pbeqjtb34s" path="res://assets/objects/stamps/mdtf_stamp.tscn" id="5_mg4bu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tx45"]
+albedo_color = Color(1, 0.96, 0.9, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktsy1"]
+material = SubResource("StandardMaterial3D_7tx45")
+size = Vector3(0.14, 0.01, 0.24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mg4bu"]
+size = Vector3(0.14, 0.01, 0.24)
+
+[node name="CertifiedMedicalCentersList" type="Node3D"]
+
+[node name="Pickup" parent="." instance=ExtResource("1_mg4bu")]
+
+[node name="Marker3D" type="Marker3D" parent="Pickup/GrabPoints" index="0"]
+transform = Transform3D(1, -9.87361e-08, 1.48943e-09, 9.57573e-08, 0.965926, -0.258819, 2.41161e-08, 0.258819, 0.965926, 0.0720329, 0, 2.10041e-05)
+
+[node name="Marker3D2" type="Marker3D" parent="Pickup/GrabPoints" index="1"]
+transform = Transform3D(1, -9.87361e-08, 1.48943e-09, 9.57573e-08, 0.965926, -0.258819, 2.41161e-08, 0.258819, 0.965926, -0.0709722, 0, 2.09948e-05)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pickup"]
+mesh = SubResource("BoxMesh_ktsy1")
+skeleton = NodePath("../..")
+
+[node name="Title" type="Label3D" parent="Pickup"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.062, 0.006, -0.103)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "LIST OF CITADEL CERTIFIED 
+MEDICAL CENTERS"
+font = ExtResource("2_36afu")
+font_size = 17
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="NHDstamp" parent="Pickup" instance=ExtResource("3_mg4bu")]
+transform = Transform3D(0.999932, 5.11136e-10, 0.0116934, -5.11136e-10, 1, -2.98875e-12, -0.0116934, -2.9884e-12, 0.999932, -0.000388741, 0.006, -0.0624891)
+
+[node name="CCCstamp" parent="Pickup" instance=ExtResource("4_mg4bu")]
+transform = Transform3D(0.99972, -1.03441e-09, -0.0236645, 1.03441e-09, 1, -1.22419e-11, 0.0236645, -1.22402e-11, 0.99972, -0.00109616, 0.006, -0.017189)
+
+[node name="MDTFstamp" parent="Pickup" instance=ExtResource("5_mg4bu")]
+transform = Transform3D(0.999541, 1.32497e-09, 0.0303117, -1.32497e-09, 1, -2.00862e-11, -0.0303117, -2.0085e-11, 0.999541, -0.000548065, 0.006, 0.0310581)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
+shape = SubResource("BoxShape3D_mg4bu")
+
+[editable path="Pickup"]

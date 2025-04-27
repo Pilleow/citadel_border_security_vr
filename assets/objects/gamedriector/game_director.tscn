@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1xf0y2exl8o"]
+
+[ext_resource type="Script" uid="uid://comd26pagkuge" path="res://assets/objects/gamedriector/game_director.gd" id="1_hxx43"]
+
+[node name="GameDirector" type="Node3D"]
+script = ExtResource("1_hxx43")

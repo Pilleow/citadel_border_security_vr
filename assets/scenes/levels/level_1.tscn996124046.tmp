@@ -1,0 +1,677 @@
+[gd_scene load_steps=60 format=3 uid="uid://0ge8ptje67in"]
+
+[ext_resource type="Script" uid="uid://ng3gspkqar5j" path="res://assets/scenes/levels/level.gd" id="1_xdltw"]
+[ext_resource type="PackedScene" uid="uid://x0jg0canycs5" path="res://assets/player/vr_player.tscn" id="2_812fv"]
+[ext_resource type="PackedScene" uid="uid://basern0qyghsp" path="res://assets/objects/radio.tscn" id="3_nhclf"]
+[ext_resource type="PackedScene" uid="uid://bkkhwd6ahlwry" path="res://assets/objects/stamp.tscn" id="4_mevp3"]
+[ext_resource type="PackedScene" uid="uid://ccwuqi2opi6cs" path="res://assets/objects/phone.tscn" id="5_mbfih"]
+[ext_resource type="PackedScene" uid="uid://bxoyvalw4xd7d" path="res://assets/objects/close_button.tscn" id="6_qcetw"]
+[ext_resource type="Script" uid="uid://er6i2ade05d5" path="res://assets/scenes/levels/object_floor_catcher.gd" id="7_aop7o"]
+[ext_resource type="PackedScene" uid="uid://c02b3bikdo8ex" path="res://assets/objects/calendar.tscn" id="8_hjkdk"]
+[ext_resource type="PackedScene" uid="uid://0m8renml81df" path="res://assets/objects/monitor.tscn" id="9_c2jhc"]
+[ext_resource type="Script" uid="uid://comd26pagkuge" path="res://assets/objects/gamedriector/game_director.gd" id="10_dps8k"]
+[ext_resource type="PackedScene" uid="uid://bs7bls182jx3u" path="res://assets/objects/person.tscn" id="11_8hhv8"]
+[ext_resource type="PackedScene" uid="uid://cr3rflym50fh2" path="res://assets/objects/certified_medical_centers_list.tscn" id="11_xdltw"]
+[ext_resource type="PackedScene" uid="uid://pgsw4ye8uj82" path="res://assets/objects/entry_card.tscn" id="12_8de6o"]
+[ext_resource type="Script" uid="uid://c8fhihaph7n2c" path="res://assets/scenes/levels/person_scheduler.gd" id="13_nhci5"]
+[ext_resource type="Script" uid="uid://d35euxnb6o500" path="res://assets/util/person_schedule.gd" id="14_2kpbf"]
+[ext_resource type="Script" uid="uid://drbq6ohkjteqy" path="res://assets/util/date.gd" id="15_7iw6f"]
+[ext_resource type="PackedScene" uid="uid://dja0cxaotj1ml" path="res://assets/objects/medical_check.tscn" id="16_812fv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6nvlb"]
+
+[sub_resource type="Sky" id="Sky_g3wbn"]
+sky_material = SubResource("ProceduralSkyMaterial_6nvlb")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_6nvlb"]
+sky = SubResource("Sky_g3wbn")
+ambient_light_source = 2
+ambient_light_color = Color(0.712129, 0.712129, 0.712129, 1)
+ambient_light_energy = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nvlb"]
+albedo_color = Color(0.38, 0.32756, 0.2926, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfqmq"]
+albedo_color = Color(0.505219, 0.42282, 0.339777, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6nvlb"]
+material = SubResource("StandardMaterial3D_bfqmq")
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_40r0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3wbn"]
+albedo_color = Color(0.69, 0.59685, 0.5037, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6nvlb"]
+material = SubResource("StandardMaterial3D_g3wbn")
+size = Vector3(2, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8686e"]
+size = Vector3(2, 5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jd36"]
+albedo_color = Color(0, 0.983334, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40r0r"]
+albedo_color = Color(0.34, 1, 0.406, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6lnih"]
+material = SubResource("StandardMaterial3D_40r0r")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6lnih"]
+
+[sub_resource type="Resource" id="Resource_kke6u"]
+script = ExtResource("15_7iw6f")
+day = 7
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_ce04r"]
+script = ExtResource("15_7iw6f")
+day = 1
+month = 5
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_i8811"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 1
+entry_card_full_name = "Ivan Wagner"
+entry_card_issue_date = SubResource("Resource_kke6u")
+medical_check_full_name = "Ivan Wagner"
+medical_check_status = 0
+medical_check_stamp = 3
+medical_check_screening_date = SubResource("Resource_ce04r")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_mevp3"]
+script = ExtResource("15_7iw6f")
+day = 28
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_mbfih"]
+script = ExtResource("15_7iw6f")
+day = 2
+month = 5
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_nhclf"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 0
+entry_card_full_name = "Steven Janway"
+entry_card_issue_date = SubResource("Resource_mevp3")
+medical_check_full_name = "Steven Janway"
+medical_check_status = 0
+medical_check_stamp = 1
+medical_check_screening_date = SubResource("Resource_mbfih")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_aop7o"]
+script = ExtResource("15_7iw6f")
+day = 1
+month = 5
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_hjkdk"]
+script = ExtResource("15_7iw6f")
+day = 26
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_qcetw"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 0
+entry_card_full_name = "William Fields"
+entry_card_issue_date = SubResource("Resource_aop7o")
+medical_check_full_name = "William Fields"
+medical_check_status = 0
+medical_check_stamp = 0
+medical_check_screening_date = SubResource("Resource_hjkdk")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_dps8k"]
+script = ExtResource("15_7iw6f")
+day = 2
+month = 3
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_8hhv8"]
+script = ExtResource("15_7iw6f")
+day = 29
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_c2jhc"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 1
+entry_card_full_name = "Adam Paulson"
+entry_card_issue_date = SubResource("Resource_dps8k")
+medical_check_full_name = "Adam Paulson"
+medical_check_status = 0
+medical_check_stamp = 1
+medical_check_screening_date = SubResource("Resource_8hhv8")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_8de6o"]
+script = ExtResource("15_7iw6f")
+day = 12
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_nhci5"]
+script = ExtResource("15_7iw6f")
+day = 2
+month = 5
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_2kpbf"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 0
+entry_card_full_name = "Isaac Zamson"
+entry_card_issue_date = SubResource("Resource_8de6o")
+medical_check_full_name = "Isaac Zamson"
+medical_check_status = 0
+medical_check_stamp = 1
+medical_check_screening_date = SubResource("Resource_nhci5")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_7iw6f"]
+script = ExtResource("15_7iw6f")
+day = 22
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_w8c13"]
+script = ExtResource("15_7iw6f")
+day = 17
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_213on"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 1
+entry_card_full_name = "Simon Thaw"
+entry_card_issue_date = SubResource("Resource_7iw6f")
+medical_check_full_name = "Simon Thaw"
+medical_check_status = 1
+medical_check_stamp = 0
+medical_check_screening_date = SubResource("Resource_w8c13")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_5kq2l"]
+script = ExtResource("15_7iw6f")
+day = 16
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_7tgoa"]
+script = ExtResource("15_7iw6f")
+day = 27
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_v63nk"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 0
+entry_card_full_name = "Christopher August"
+entry_card_issue_date = SubResource("Resource_5kq2l")
+medical_check_full_name = "Christopher August"
+medical_check_status = 0
+medical_check_stamp = 2
+medical_check_screening_date = SubResource("Resource_7tgoa")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_cljcn"]
+script = ExtResource("15_7iw6f")
+day = 3
+month = 5
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_wcahh"]
+script = ExtResource("15_7iw6f")
+day = 14
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_ugxcv"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 0
+entry_card_full_name = "Lukas Reed"
+entry_card_issue_date = SubResource("Resource_cljcn")
+medical_check_full_name = "Lukas Reed"
+medical_check_status = 0
+medical_check_stamp = 1
+medical_check_screening_date = SubResource("Resource_wcahh")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="Resource" id="Resource_ynvie"]
+script = ExtResource("15_7iw6f")
+day = 23
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_ckrw8"]
+script = ExtResource("15_7iw6f")
+day = 24
+month = 4
+year = 2026
+metadata/_custom_type_script = "uid://drbq6ohkjteqy"
+
+[sub_resource type="Resource" id="Resource_x5yf3"]
+script = ExtResource("14_2kpbf")
+person_character = 0
+person_speaking_subfolder = 0
+correct_stamp = 1
+entry_card_full_name = "Victor Stone"
+entry_card_issue_date = SubResource("Resource_ynvie")
+medical_check_full_name = "Wiktor Stone"
+medical_check_status = 0
+medical_check_stamp = 0
+medical_check_screening_date = SubResource("Resource_ckrw8")
+skin_material = "res://assets/meshes/person/skin_light.tres"
+shirt_material = "res://assets/meshes/person/shirt_green.tres"
+shorts_material = "res://assets/meshes/person/shorts_grey.tres"
+shoes_material = "res://assets/meshes/person/shoes_black.tres"
+metadata/_custom_type_script = "uid://d35euxnb6o500"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehuqm"]
+
+[node name="Desk" type="Node3D"]
+script = ExtResource("1_xdltw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6nvlb")
+
+[node name="Player" parent="." instance=ExtResource("2_812fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8379, -0.239371)
+visible = false
+impulse_multiplier = 0.2
+
+[node name="CeilingLights" type="Node3D" parent="."]
+
+[node name="CeilingLight1" type="SpotLight3D" parent="CeilingLights"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 2.06229, -0.139504)
+light_color = Color(1, 0.888, 0.72, 1)
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 53.4
+distance_fade_length = 4.25
+spot_range = 10.0
+spot_angle = 55.0
+
+[node name="CeilingLight2" type="SpotLight3D" parent="CeilingLights"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 1.5003, 2.06229, -2.73329)
+light_color = Color(1, 0.888, 0.72, 1)
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 53.4
+distance_fade_length = 4.25
+spot_range = 10.0
+spot_angle = 55.0
+
+[node name="CeilingLight4" type="SpotLight3D" parent="CeilingLights"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 2.062, -1.108)
+light_color = Color(1, 0.888, 0.72, 1)
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 53.4
+distance_fade_length = 4.25
+spot_range = 10.0
+spot_angle = 55.0
+
+[node name="CeilingLight3" type="SpotLight3D" parent="CeilingLights"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, -1.4974, 2.06229, -2.73329)
+light_color = Color(1, 0.888, 0.72, 1)
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 53.4
+distance_fade_length = 4.25
+spot_range = 10.0
+spot_angle = 55.0
+
+[node name="WorldMeshes" type="Node3D" parent="."]
+
+[node name="DeskMesh" type="CSGCombiner3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.365)
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+
+[node name="Desk" type="CSGBox3D" parent="WorldMeshes/DeskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.13354)
+size = Vector3(2, 1, 0.73291)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="UnderEmpty" type="CSGBox3D" parent="WorldMeshes/DeskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.320249, -0.928948)
+operation = 2
+size = Vector3(1.88086, 1, 1)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="UnderEmpty2" type="CSGBox3D" parent="WorldMeshes/DeskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37213, -0.928948)
+operation = 2
+size = Vector3(1.95898, 0.190552, 1)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="UnderEmpty3" type="CSGBox3D" parent="WorldMeshes/DeskMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465086, -0.588138)
+operation = 2
+size = Vector3(2.17578, 0.376465, 0.68103)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="Floor" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldMeshes/Floor"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="Ceiling" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1.88897, 0)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/Ceiling"]
+transform = Transform3D(-1, 8.74228e-08, -7.64274e-15, 8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 1.43359e-10, 0.00163984, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/Ceiling/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallFront" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, -4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="WallBack" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, -0.5, 1)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/WallBack"]
+transform = Transform3D(-1, -8.74228e-08, 3.28406e-15, -8.74228e-08, 1, -7.10543e-15, 3.82137e-15, -7.10543e-15, -1, -1.07129e-09, 0.0122541, -8.9407e-08)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallBack/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallLeft" type="CSGCombiner3D" parent="WorldMeshes"]
+
+[node name="WallLeft" type="CSGBox3D" parent="WorldMeshes/WallLeft"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -3.19143, 4.5, -2.18346)
+size = Vector3(2, 10, 10)
+material = SubResource("StandardMaterial3D_g3wbn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldMeshes/WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99556, 0.5, -2.72059)
+operation = 2
+size = Vector3(2.30518, 2, 1)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="WorldMeshes/WallLeft"]
+transform = Transform3D(1, -2.71525e-29, -7.10543e-15, 1.27055e-21, -4.37114e-08, 1, -7.10543e-15, -1, -4.37114e-08, 1.11022e-15, -0.5, 0.987746)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallLeft/StaticBody3D3"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -2.18515, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallRight" type="CSGCombiner3D" parent="WorldMeshes"]
+
+[node name="WallRight" type="CSGBox3D" parent="WorldMeshes/WallRight"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 3.31272, 4.5, -2.18346)
+size = Vector3(2, 10, 10)
+material = SubResource("StandardMaterial3D_g3wbn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldMeshes/WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09297, 0.5, -2.72059)
+operation = 2
+size = Vector3(2.30518, 2, 1)
+material = SubResource("StandardMaterial3D_6nvlb")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="WorldMeshes/WallRight"]
+transform = Transform3D(-1, -8.9407e-08, 7.10543e-15, -1.53837e-15, -4.37114e-08, 1, -8.9407e-08, 1, 4.37114e-08, 0.120032, -0.5, 0.987746)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallRight/StaticBody3D4"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -2.18703, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="DividerLeft" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+mesh = SubResource("BoxMesh_6nvlb")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="WorldMeshes/DividerLeft"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 2, 2.49836, 1)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/DividerLeft/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
+shape = SubResource("BoxShape3D_8686e")
+
+[node name="DividerRight" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+mesh = SubResource("BoxMesh_6nvlb")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="WorldMeshes/DividerRight"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2, 2.49836, 1)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/DividerRight/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
+shape = SubResource("BoxShape3D_8686e")
+
+[node name="DividerTop" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.5046, -1)
+mesh = SubResource("BoxMesh_6nvlb")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="WorldMeshes/DividerTop"]
+transform = Transform3D(-4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -3.82137e-15, 0, -8.74228e-08, -1, -0.00623989, 2.72756e-10, 1)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/DividerTop/StaticBody3D5"]
+transform = Transform3D(-4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 1.66533e-15, 0, 1)
+shape = SubResource("BoxShape3D_8686e")
+
+[node name="Glass" type="CSGCombiner3D" parent="WorldMeshes"]
+transparency = 0.9
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldMeshes/Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+size = Vector3(2, 1, 0.02)
+material = SubResource("StandardMaterial3D_2jd36")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldMeshes/Glass"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.498754, -1)
+operation = 2
+radius = 0.3
+sides = 10
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Radio" parent="Objects" instance=ExtResource("3_nhclf")]
+transform = Transform3D(0.965117, 0, 0.261819, 0, 1, 0, -0.261819, 0, 0.965117, -0.401055, 0.613979, -0.859615)
+
+[node name="RedStamp" parent="Objects" instance=ExtResource("4_mevp3")]
+transform = Transform3D(0.719364, 0, -0.694633, 0, 1, 0, 0.694633, 0, 0.719364, 0.507778, 0.307331, -0.526964)
+stamp_type = 1
+
+[node name="GreenStamp" parent="Objects" instance=ExtResource("4_mevp3")]
+transform = Transform3D(0.719364, 0, -0.694633, 0, 1, 0, 0.694633, 0, 0.719364, 0.642255, 0.307331, -0.49344)
+stamp_type = 0
+
+[node name="MeshInstance3D2" parent="Objects/GreenStamp/Pickup" index="2"]
+mesh = SubResource("CylinderMesh_6lnih")
+
+[node name="Phone" parent="Objects" instance=ExtResource("5_mbfih")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0.505188, 0.5498, -0.832377)
+
+[node name="CloseButton" parent="Objects" instance=ExtResource("6_qcetw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.295473, -0.490126)
+visible = false
+door_y_offset = 0.2
+glass_door_y_offset = 0.71
+
+[node name="ButtonBase" parent="Objects/CloseButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.845697, 0, -0.0431606)
+
+[node name="AlarmSiren" parent="Objects/CloseButton" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57962, -2.22836)
+
+[node name="AlarmSiren2" parent="Objects/CloseButton" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.41991, -0.447453)
+
+[node name="Shutter2M1" parent="Objects/CloseButton" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.38875, 0.207763, -2.23699)
+
+[node name="Shutter2M2" parent="Objects/CloseButton" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.26794, 0.214923, -2.23707)
+
+[node name="Shutter2M3" parent="Objects/CloseButton" index="5"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.710462, -0.503965)
+
+[node name="ObjectFloorCatcher" type="Area3D" parent="Objects"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("7_aop7o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/ObjectFloorCatcher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478977, 0)
+shape = SubResource("WorldBoundaryShape3D_6lnih")
+
+[node name="Calendar" parent="Objects" instance=ExtResource("8_hjkdk")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.727013, 0.866156, -0.98871)
+
+[node name="Border" parent="Objects/Calendar/Marker" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121691, -0.154, 0.00550604)
+
+[node name="Empty" parent="Objects/Calendar/Marker" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121615, -0.153836, 0.0074861)
+
+[node name="Monitor" parent="Objects" instance=ExtResource("9_c2jhc")]
+transform = Transform3D(0.394267, 0, 0.383475, 0, 0.55, 0, -0.383475, 0, 0.394267, -0.751214, 0.707467, -0.749729)
+
+[node name="Label3D" parent="Objects/Monitor" index="2"]
+text = "Access permit specification for 04-05-2026:
+- no suspicious behaviour
+- no suspicious appearance
+- valid entry card with issue date under 30 days
+- medical check from certified medical center
+"
+font_size = 18
+autowrap_mode = 3
+
+[node name="CertifiedMedicalCentersList" parent="Objects" instance=ExtResource("11_xdltw")]
+transform = Transform3D(0.80955, 0, 0.587051, 0, 1, 0, -0.587051, 0, 0.80955, -0.483965, 0.304443, -0.614982)
+
+[node name="GameDirector" type="Node3D" parent="."]
+script = ExtResource("10_dps8k")
+
+[node name="PersonScheduler" type="Node3D" parent="GameDirector"]
+script = ExtResource("13_nhci5")
+person_schedule = Array[ExtResource("14_2kpbf")]([SubResource("Resource_i8811"), SubResource("Resource_nhclf"), SubResource("Resource_qcetw"), SubResource("Resource_c2jhc"), SubResource("Resource_2kpbf"), SubResource("Resource_213on"), SubResource("Resource_v63nk"), SubResource("Resource_ugxcv"), SubResource("Resource_x5yf3")])
+
+[node name="Person" parent="GameDirector" instance=ExtResource("11_8hhv8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -0.5, -2.7)
+
+[node name="EntryCard" parent="GameDirector" instance=ExtResource("12_8de6o")]
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 4.37114e-08, 0.965926, -0.258819, 7.57104e-08, -0.258819, -0.965926, -5.61476e-05, 0.594175, -0.868589)
+
+[node name="MedicalCheck" parent="GameDirector" instance=ExtResource("16_812fv")]
+transform = Transform3D(0.288015, 0.0771733, 0.954511, -0.258819, 0.965926, 1.13133e-08, -0.921987, -0.247046, 0.298175, -0.0604358, 0.558525, -0.925123)
+
+[node name="DocumentReceiver" type="Area3D" parent="GameDirector"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameDirector/DocumentReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.416998, -1.57864)
+shape = SubResource("BoxShape3D_ehuqm")
+
+[connection signal="body_entered" from="Objects/ObjectFloorCatcher" to="Objects/ObjectFloorCatcher" method="_on_body_entered"]
+[connection signal="area_entered" from="GameDirector/DocumentReceiver" to="GameDirector" method="_on_document_receiver_area_entered"]
+
+[editable path="Objects/RedStamp"]
+[editable path="Objects/RedStamp/Pickup"]
+[editable path="Objects/GreenStamp"]
+[editable path="Objects/GreenStamp/Pickup"]
+[editable path="Objects/Phone"]
+[editable path="Objects/Phone/PhoneHead"]
+[editable path="Objects/CloseButton"]
+[editable path="Objects/Calendar"]
+[editable path="Objects/Monitor"]

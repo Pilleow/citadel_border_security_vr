@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c02b3bikdo8ex"]
+
+[ext_resource type="Texture2D" uid="uid://bv8ud6qg1kwb8" path="res://assets/graphics/images/calendar_may.png" id="1_82koh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82koh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k45wl"]
+material = SubResource("StandardMaterial3D_82koh")
+size = Vector3(0.454, 0.7, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk6d2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ju5w"]
+render_priority = 20
+transparency = 1
+albedo_color = Color(0.29, 0.0609, 0.0609, 0.396078)
+
+[node name="Calendar" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_k45wl")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, 0, 0, 0.00550707)
+gi_mode = 2
+pixel_size = 0.0005
+shaded = true
+texture = ExtResource("1_82koh")
+
+[node name="Marker" type="CSGCombiner3D" parent="."]
+
+[node name="Border" type="CSGBox3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154, 0.00550586)
+size = Vector3(0.0664063, 0.0585938, 0.00201172)
+material = SubResource("StandardMaterial3D_nk6d2")
+
+[node name="Empty" type="CSGBox3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62921e-05, -0.153836, 0.00748596)
+operation = 2
+size = Vector3(0.0556641, 0.0471191, 0.0182178)
+material = SubResource("StandardMaterial3D_nk6d2")
+
+[node name="Stripe" type="CSGBox3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154, 0.00150726)
+size = Vector3(0.452148, 0.0520996, 0.00884216)
+material = SubResource("StandardMaterial3D_5ju5w")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://wrlhytva4m50"]
+
+[ext_resource type="Texture2D" uid="uid://dw4bbx0646dve" path="res://assets/graphics/sprites/stamp_doctor_2.png" id="1_jaxq8"]
+
+[sub_resource type="SystemFont" id="SystemFont_4tjqx"]
+font_names = PackedStringArray("Times New Roman")
+subpixel_positioning = 0
+oversampling = 3.0
+
+[node name="CCCstamp" type="Node3D"]
+transform = Transform3D(0.99972, -1.03441e-09, -0.0236645, 1.03441e-09, 1, -1.22402e-11, 0.0236645, -1.22402e-11, 0.99972, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.66, 0, 0, 0, -2.88495e-08, 0.66, 0, -0.66, -2.88495e-08, 0.0357653, 0.000351803, 0.00174522)
+pixel_size = 0.0001
+texture = ExtResource("1_jaxq8")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(0.86, 0, 0, 0, -3.75918e-08, 0.86, 0, -0.86, -3.75918e-08, -0.0513003, 0, -0.00653904)
+pixel_size = 0.0005
+modulate = Color(0.12549, 0.12549, 0.12549, 1)
+text = "Clinical Care Center"
+font = SubResource("SystemFont_4tjqx")
+font_size = 22
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0242493, 0, 0.00917259)
+pixel_size = 0.0005
+modulate = Color(0.12549, 0.12549, 0.12549, 1)
+text = "Dr Alisha Reilly
+Provider No. 185726VX"
+font = SubResource("SystemFont_4tjqx")
+font_size = 12
+outline_size = 0
+horizontal_alignment = 2

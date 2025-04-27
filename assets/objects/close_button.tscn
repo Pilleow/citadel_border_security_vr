@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxoyvalw4xd7d"]
+
+[ext_resource type="Script" uid="uid://brujdkcoaq6pd" path="res://assets/objects/close_button.gd" id="1_e3ilb"]
+[ext_resource type="AudioStream" uid="uid://cjw536k7351au" path="res://assets/sounds/sfx/button_press.mp3" id="2_8ucsi"]
+[ext_resource type="AudioStream" uid="uid://drism7dqgb1cy" path="res://assets/sounds/sfx/alarm.mp3" id="3_heafo"]
+[ext_resource type="AudioStream" uid="uid://cgshohu2w4l18" path="res://assets/sounds/sfx/metal_door_rattling.mp3" id="4_sa00q"]
+[ext_resource type="AudioStream" uid="uid://dmovp8eg2emhr" path="res://assets/sounds/sfx/metal_door_slam.mp3" id="5_sid4u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7y0c"]
+albedo_color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e7y0c"]
+material = SubResource("StandardMaterial3D_e7y0c")
+size = Vector3(0.1, 0.03, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ilb"]
+albedo_color = Color(0.75, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ucsi"]
+material = SubResource("StandardMaterial3D_e3ilb")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.03
+radial_segments = 16
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e3ilb"]
+height = 0.03
+radius = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ucsi"]
+albedo_color = Color(0.7, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_heafo"]
+material = SubResource("StandardMaterial3D_8ucsi")
+flip_faces = true
+top_radius = 0.04
+bottom_radius = 0.03
+height = 0.07
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heafo"]
+albedo_color = Color(0.2296, 0.25396, 0.28, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_heafo"]
+material = SubResource("StandardMaterial3D_heafo")
+size = Vector3(1, 2, 0.02)
+
+[node name="AlarmSystem" type="Node3D"]
+script = ExtResource("1_e3ilb")
+
+[node name="ButtonBase" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e7y0c")
+
+[node name="Button" type="RigidBody3D" parent="ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0249533, 0)
+collision_layer = 2
+collision_mask = 7
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonBase/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0295912, 0)
+mesh = SubResource("CylinderMesh_8ucsi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonBase/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297639, 0)
+shape = SubResource("CylinderShape3D_e3ilb")
+
+[node name="ButtonSFX" type="AudioStreamPlayer3D" parent="ButtonBase"]
+stream = ExtResource("2_8ucsi")
+volume_db = -10.294
+max_db = -4.352
+
+[node name="AlarmSiren" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145971, -0.552918)
+mesh = SubResource("BoxMesh_e7y0c")
+
+[node name="Siren" type="MeshInstance3D" parent="AlarmSiren"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0505887, 0)
+layers = 1024
+mesh = SubResource("CylinderMesh_heafo")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="AlarmSiren/Siren"]
+transform = Transform3D(1, 0, 0, 0, 0.996889, 0.0788245, 0, -0.0788245, 0.996889, 0, 0, 0)
+visible = false
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_caster_mask = 4294966271
+spot_range = 20.0
+spot_angle = 50.0
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="AlarmSiren"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00473864, -0.000744522)
+stream = ExtResource("3_heafo")
+volume_db = -25.0
+max_db = -10.0
+
+[node name="AlarmSiren2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145971, -0.552918)
+mesh = SubResource("BoxMesh_e7y0c")
+
+[node name="Siren" type="MeshInstance3D" parent="AlarmSiren2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0505887, 0)
+layers = 1024
+mesh = SubResource("CylinderMesh_heafo")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="AlarmSiren2/Siren"]
+transform = Transform3D(1, 0, 0, 0, 0.996889, 0.0788245, 0, -0.0788245, 0.996889, 0, 0, 0)
+visible = false
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_caster_mask = 4294966271
+spot_range = 20.0
+spot_angle = 50.0
+
+[node name="Shutter2M1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("BoxMesh_heafo")
+
+[node name="Rattling" type="AudioStreamPlayer3D" parent="Shutter2M1"]
+stream = ExtResource("4_sa00q")
+
+[node name="Shut" type="AudioStreamPlayer3D" parent="Shutter2M1"]
+stream = ExtResource("5_sid4u")
+
+[node name="Shutter2M2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+mesh = SubResource("BoxMesh_heafo")
+
+[node name="Rattling" type="AudioStreamPlayer3D" parent="Shutter2M2"]
+stream = ExtResource("4_sa00q")
+
+[node name="Shut" type="AudioStreamPlayer3D" parent="Shutter2M2"]
+stream = ExtResource("5_sid4u")
+
+[node name="Shutter2M3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, -4)
+mesh = SubResource("BoxMesh_heafo")
+
+[node name="Rattling" type="AudioStreamPlayer3D" parent="Shutter2M3"]
+stream = ExtResource("4_sa00q")
+
+[node name="Shut" type="AudioStreamPlayer3D" parent="Shutter2M3"]
+stream = ExtResource("5_sid4u")

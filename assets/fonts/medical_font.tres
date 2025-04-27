@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3 uid="uid://dvj57828q8e1h"]
+
+[resource]
+font_names = PackedStringArray("Georgia")
+oversampling = 3.0

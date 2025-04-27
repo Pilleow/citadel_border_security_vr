@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4uhqgqjlqwde"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydenk"]
+albedo_color = Color(0.56, 0.494387, 0.3528, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hycjo"]
+albedo_color = Color(0.47, 0.4183, 0.3149, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ydenk"]
+material = SubResource("StandardMaterial3D_hycjo")
+size = Vector3(0.8, 0.6, 0.2)
+
+[node name="Couch" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+
+[node name="MainFrame" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499055, 0)
+size = Vector3(2, 1, 1)
+material = SubResource("StandardMaterial3D_ydenk")
+
+[node name="MainFrame2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755708, -0.123962)
+operation = 2
+size = Vector3(1.61353, 0.539673, 0.823364)
+material = SubResource("StandardMaterial3D_ydenk")
+
+[node name="MainFrame4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360108, -0.498016)
+operation = 2
+size = Vector3(1.61353, 1.33087, 0.0752563)
+material = SubResource("StandardMaterial3D_ydenk")
+
+[node name="MainFrame3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06793, -0.123962)
+operation = 2
+size = Vector3(2.35156, 0.676086, 0.823364)
+material = SubResource("StandardMaterial3D_ydenk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.980398, -0.0416849, -0.192569, 0.018332, 0.992422, -0.121497, 0.196174, 0.115585, 0.973733, -0.412276, 0.755415, 0.137749)
+mesh = SubResource("BoxMesh_ydenk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.993798, 0.0392581, 0.104041, -0.0264227, 0.992179, -0.121992, -0.108017, 0.118486, 0.987063, 0.408061, 0.755415, 0.150267)
+mesh = SubResource("BoxMesh_ydenk")

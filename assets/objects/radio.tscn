@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://basern0qyghsp"]
+
+[ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_3k27n"]
+[ext_resource type="Script" uid="uid://cm2yxktugrlce" path="res://assets/objects/radio.gd" id="1_hqep5"]
+[ext_resource type="AudioStream" uid="uid://bcksegsqe34wt" path="res://assets/sounds/music/portal_radio.mp3" id="3_5btcb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40r0r"]
+albedo_color = Color(0.62, 0.81, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6lnih"]
+material = SubResource("StandardMaterial3D_40r0r")
+size = Vector3(0.2, 0.125, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lnih"]
+albedo_color = Color(0.312073, 0.349462, 0.418963, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_40r0r"]
+material = SubResource("StandardMaterial3D_6lnih")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.01
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="BoxMesh_40r0r"]
+material = SubResource("StandardMaterial3D_6lnih")
+size = Vector3(0.05, 0.02, 0.005)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3k27n"]
+top_radius = 0.003
+bottom_radius = 0.001
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2ut75"]
+top_radius = 0.004
+bottom_radius = 0.004
+height = 0.005
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jd36"]
+size = Vector3(0.2, 0.125, 0.06)
+
+[node name="Radio" type="Node3D"]
+script = ExtResource("1_hqep5")
+
+[node name="Object" parent="." instance=ExtResource("1_3k27n")]
+reset_on_ground_fall = false
+
+[node name="Marker3D" type="Marker3D" parent="Object/GrabPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, -0.11991, 0.0303088, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Object/GrabPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.119592, 0.0303786, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0403844, 0, 0.0319871)
+stream = ExtResource("3_5btcb")
+volume_db = -50.0
+unit_size = 7.0
+max_db = -10.0
+pitch_scale = 0.95
+autoplay = true
+parameters/looping = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Object"]
+mesh = SubResource("BoxMesh_6lnih")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0393366, 0, 0.0328388)
+mesh = SubResource("CylinderMesh_40r0r")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0464016, 0.0327368, 0.0273359)
+mesh = SubResource("BoxMesh_40r0r")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0464016, 0.0232211, 0.0273359)
+mesh = SubResource("BoxMesh_40r0r")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0464016, 0.012715, 0.0273359)
+mesh = SubResource("BoxMesh_40r0r")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0744006, 0.0639074, -0.0184445)
+mesh = SubResource("BoxMesh_40r0r")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(0.792311, 0.610117, -5.33382e-08, 0.610117, -0.792311, 6.9266e-08, 0, -8.74228e-08, -1, 0.0299359, 0.141901, -0.0177664)
+mesh = SubResource("CylinderMesh_3k27n")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(0.792311, 0.610117, -5.33382e-08, 0.610117, -0.792311, 6.9266e-08, 0, -8.74228e-08, -1, -0.0313855, 0.221317, -0.0177664)
+mesh = SubResource("CylinderMesh_2ut75")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object"]
+shape = SubResource("BoxShape3D_2jd36")
+
+[editable path="Object"]

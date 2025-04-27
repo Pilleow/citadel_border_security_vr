@@ -1,0 +1,149 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvfqo20js5wfa"]
+
+[ext_resource type="Script" uid="uid://ng3gspkqar5j" path="res://assets/scenes/levels/level.gd" id="1_yvgum"]
+[ext_resource type="PackedScene" uid="uid://x0jg0canycs5" path="res://assets/player/vr_player.tscn" id="2_11jct"]
+[ext_resource type="PackedScene" uid="uid://c4uhqgqjlqwde" path="res://assets/objects/couch.tscn" id="4_mouhx"]
+[ext_resource type="PackedScene" uid="uid://dfg517i30j7kl" path="res://assets/objects/tv.tscn" id="5_aqtuu"]
+[ext_resource type="AudioStream" uid="uid://bmtq05xgqvjan" path="res://assets/sounds/news/after_level_1.wav" id="6_4ugow"]
+[ext_resource type="Script" uid="uid://er6i2ade05d5" path="res://assets/scenes/levels/object_floor_catcher.gd" id="7_3yw4t"]
+[ext_resource type="PackedScene" uid="uid://ccs4l3aexvjr4" path="res://assets/objects/beer.tscn" id="7_4ugow"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6nvlb"]
+
+[sub_resource type="Sky" id="Sky_g3wbn"]
+sky_material = SubResource("ProceduralSkyMaterial_6nvlb")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_6nvlb"]
+sky = SubResource("Sky_g3wbn")
+ambient_light_source = 2
+ambient_light_color = Color(0.712129, 0.712129, 0.712129, 1)
+ambient_light_energy = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfqmq"]
+albedo_color = Color(0.7128, 0.7614, 0.81, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6nvlb"]
+material = SubResource("StandardMaterial3D_bfqmq")
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_40r0r"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6lnih"]
+
+[node name="Desk" type="Node3D"]
+script = ExtResource("1_yvgum")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6nvlb")
+
+[node name="Player" parent="." instance=ExtResource("2_11jct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.368052, 0.8379, -0.0972437)
+visible = false
+
+[node name="CeilingLights" type="Node3D" parent="."]
+
+[node name="CeilingLight1" type="SpotLight3D" parent="CeilingLights"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 5.48904, -1.3781)
+light_color = Color(1, 0.888, 0.72, 1)
+light_energy = 2.0
+shadow_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 53.4
+distance_fade_length = 4.25
+spot_range = 15.0
+spot_angle = 30.0
+
+[node name="WorldMeshes" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldMeshes/Floor"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="Ceiling" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 7.26412, -4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/Ceiling"]
+transform = Transform3D(-1, 8.74228e-08, -7.64274e-15, 8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 1.43359e-10, 0.00163984, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/Ceiling/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallFront" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, -12)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="WallBack" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, -0.5, 4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/WallBack"]
+transform = Transform3D(-1, -8.74228e-08, 3.28406e-15, -8.74228e-08, 1, -7.10543e-15, 3.82137e-15, -7.10543e-15, -1, -1.07129e-09, 0.0122541, -8.9407e-08)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallBack/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallRight" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, 8, -0.5, -4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/WallRight"]
+transform = Transform3D(-1, -8.74228e-08, 3.28406e-15, -8.74228e-08, 1, -7.10543e-15, 3.82137e-15, -7.10543e-15, -1, -1.07129e-09, 0.0122541, -8.9407e-08)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallRight/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="WallLeft" type="MeshInstance3D" parent="WorldMeshes"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91068e-15, -8, -0.5, -4)
+mesh = SubResource("PlaneMesh_6nvlb")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="WorldMeshes/WallLeft"]
+transform = Transform3D(-1, -8.74228e-08, 3.28406e-15, -8.74228e-08, 1, -7.10543e-15, 3.82137e-15, -7.10543e-15, -1, -1.07129e-09, 0.0122541, -8.9407e-08)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldMeshes/WallLeft/StaticBody3D2"]
+shape = SubResource("WorldBoundaryShape3D_40r0r")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="ObjectFloorCatcher" type="Area3D" parent="Objects"]
+visible = false
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("7_3yw4t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/ObjectFloorCatcher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478977, 0)
+shape = SubResource("WorldBoundaryShape3D_6lnih")
+
+[node name="Couch" parent="Objects" instance=ExtResource("4_mouhx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51131, 0)
+
+[node name="TV" parent="Objects" instance=ExtResource("5_aqtuu")]
+transform = Transform3D(0.12722, 0, -0.991874, 0, 1, 0, 0.991874, 0, 0.12722, -0.847105, 0.20674, -3.98025)
+
+[node name="newsSound" parent="Objects/TV/newsBG" index="0"]
+stream = ExtResource("6_4ugow")
+
+[node name="Beer" parent="Objects" instance=ExtResource("7_4ugow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.908844, 0.310794, -0.352077)
+
+[connection signal="body_entered" from="Objects/ObjectFloorCatcher" to="Objects/ObjectFloorCatcher" method="_on_body_entered"]
+
+[editable path="Objects/TV"]
