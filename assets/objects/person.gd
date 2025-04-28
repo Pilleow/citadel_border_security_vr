@@ -7,6 +7,9 @@ var on_alarm_aggressive_sfx = []
 var on_alarm_innocent_sfx = []
 var on_forgot_to_give_sfx = []
 var on_missing_document_sfx = []
+var pitch := 1.0
+
+@onready var faces_node := $Model/Armature/Skeleton3D/head/head/Faces
 
 func load_all_sounds(person_sfx_directory):
 	greeting_sfx = load_audio_from_path(person_sfx_directory + "greeting/")
@@ -35,8 +38,35 @@ func play_sound(family: Enum.PERSON_SPEAKING_SFX) -> AudioStreamPlayer3D:
 		Enum.PERSON_SPEAKING_SFX.ON_MISSING_DOCUMENT:
 			sfx = on_missing_document_sfx.pick_random()
 	if sfx:
+		(sfx as AudioStreamPlayer3D).pitch_scale = pitch
 		sfx.play()
 	return sfx
+
+func set_random_face():
+	var fch = faces_node.get_children()
+	for f in fch:
+		f.hide()
+	fch.pick_random().show()
+
+func set_face(to: Enum.PERSON_FACE):
+	for f in faces_node.get_children():
+		f.hide()
+	match to:
+		Enum.PERSON_FACE.MALE_1:
+			$Model/Armature/Skeleton3D/head/head/Male1.show()
+		Enum.PERSON_FACE.MALE_2:
+			$Model/Armature/Skeleton3D/head/head/Male2.show()
+		Enum.PERSON_FACE.MALE_3:
+			$Model/Armature/Skeleton3D/head/head/Male3.show()
+		Enum.PERSON_FACE.MALE_4:
+			$Model/Armature/Skeleton3D/head/head/Male4.show()
+		Enum.PERSON_FACE.MALE_5:
+			$Model/Armature/Skeleton3D/head/head/Male5.show()
+			
+			
+func set_random_anim_time():
+	$Model/AnimationPlayer.play("standing")
+	$Model/AnimationPlayer.seek(randf_range(0, $Model/AnimationPlayer.current_animation_length))
 
 func set_skin_material(mat: StandardMaterial3D):
 	$Model/Armature/Skeleton3D/neck/neck.set_surface_override_material(0, mat)

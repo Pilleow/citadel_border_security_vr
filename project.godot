@@ -30,8 +30,13 @@ Monitor="the group for the desk monitor"
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/simulation/penetration_slop=0.1
 
+[rendering]
+
+global_illumination/gi/use_half_resolution=true
+
 [xr]
 
 openxr/enabled=true
 openxr/reference_space=0
+openxr/startup_alert=false
 shaders/enabled=true

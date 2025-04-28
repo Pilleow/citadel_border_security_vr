@@ -42,7 +42,7 @@ func grab(by: PhysicsBody3D) -> void:
 	if asp_seek >= 0 and asp:
 		asp.play(asp_seek)
 	_holder = by
-	print(self)
+	print(get_parent())
 	freeze = true
 
 

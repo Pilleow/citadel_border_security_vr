@@ -29,7 +29,9 @@ func _ready():
 	assert(person_speaking_subfolder.ends_with("/"), "person_speaking_subfolder must end with /")
 	SignalBus.phone_call_finished.connect(send_next_guy)
 	person.load_all_sounds(person_speaking_parent_folder + person_speaking_subfolder)
+	person.set_random_face()
 	SignalBus.alarm_activated.connect(_on_alarm_activated)
+	person.pitch = randf_range(0.8, 1.2)
 
 func _on_alarm_activated():
 	if person_character == Enum.PERSONCHARACTER.AGGRESSIVE:
@@ -64,6 +66,8 @@ func send_next_guy():
 	person_speaking_subfolder = Enum.get_speaking_subfolder(np.person_speaking_subfolder)
 	person.set_skin_material(load(np.skin_material))
 	person.set_shirt_material(load(np.shirt_material))
+	person.pitch = randf_range(0.8, 1.2)
+	person.set_random_face() # TODO incorporate faces into PersonSchedule
 	#person.set_shorts_material(load(np.shorts_material))
 	#person.set_shoes_material(load(np.shoes_material))
 	
@@ -100,16 +104,13 @@ func handle_person_state(delta):
 					person.rotation.y = min(0, person.rotation.y + delta * person_angular_speed)
 					if person.rotation.y == 0: person_animation_state += 1
 				2:
-					person.global_position.z = min(-1.4, person.global_position.z + delta * person_linear_speed)
-					if is_equal_approx(person.global_position.z, -1.4): person_animation_state += 1
-				3:
 					person_speaking_now = person.play_sound(Enum.PERSON_SPEAKING_SFX.GREETING)
 					person_animation_state += 1
-				4:
+				3:
 					if person_speaking_now and not person_speaking_now.playing:
 						person_animation_state += 1
 						person_speaking_now = null
-				5:
+				4:
 					present_documents()
 					person_state = Enum.PERSONSTATES.ON_GLASS
 		Enum.PERSONSTATES.ENTERING:
@@ -122,20 +123,14 @@ func handle_person_state(delta):
 						person_animation_state += 1
 						person_speaking_now = null
 				2:
-					person.rotation.y = max(-PI, person.rotation.y - delta * person_angular_speed)
-					if is_equal_approx(person.rotation.y, -PI): person_animation_state += 1
-				3:
-					person.global_position.z = max(-2.7, person.global_position.z - delta * person_linear_speed)
-					if person.global_position.z < -2.699: person_animation_state += 1
-				4:
 					if person.rotation.y > 3.1: # when -PI goes to +PI due to rotation overflow
 						person.rotation.y = -PI-0.001
 					person.rotation.y = min(-PI/2, person.rotation.y + delta * person_angular_speed)
 					if is_equal_approx(person.rotation.y, -PI/2): person_animation_state += 1
-				5:
+				3:
 					person.global_position.x = max(-4, person.global_position.x - delta * person_linear_speed)
 					if person.global_position.x == -4: person_animation_state += 1
-				6:
+				4:
 					person_state = Enum.PERSONSTATES.ENTERED
 					if not is_valid_stamp():
 						monitor.add_text("\npermit specification void by gate personnel. record sent to supervisor.\n")
@@ -150,18 +145,12 @@ func handle_person_state(delta):
 						person_animation_state += 1
 						person_speaking_now = null
 				2:
-					person.rotation.y = max(-PI, person.rotation.y - delta * person_angular_speed)
-					if is_equal_approx(person.rotation.y, -PI): person_animation_state += 1
-				3:
-					person.global_position.z = max(-2.7, person.global_position.z - delta * person_linear_speed)
-					if person.global_position.z < -2.699: person_animation_state += 1
-				4:
 					person.rotation.y = max(PI/2, person.rotation.y - delta * person_angular_speed)
 					if is_equal_approx(person.rotation.y, PI/2): person_animation_state += 1
-				5:
+				3:
 					person.global_position.x = min(4, person.global_position.x + delta * person_linear_speed)
 					if person.global_position.x == 4: person_animation_state += 1
-				6:
+				4:
 					person_state = Enum.PERSONSTATES.LEFT
 					if not is_valid_stamp():
 						monitor.add_text("\npermit specification void by gate personnel. record sent to supervisor.\n")
@@ -178,7 +167,10 @@ func is_valid_stamp():
 
 func _on_document_receiver_area_entered(area: Area3D) -> void:
 	var item = area.get_parent().get_parent()
-	if not (
+	var rgb = area.get_parent()
+	if not person_state == Enum.PERSONSTATES.ON_GLASS or not (
+		is_instance_of(rgb, Pickup) and rgb.freeze
+	) or not (
 		(is_instance_of(item, EntryCard) and entry_card.state != Enum.STAMPS.NONE) 
 		or is_instance_of(item, MedicalCheck)
 	):
@@ -186,7 +178,8 @@ func _on_document_receiver_area_entered(area: Area3D) -> void:
 	item.hide()
 	if documents_given > 0:
 		documents_given -= 1
-		return
+		if documents_given > 0:
+			return
 
 	if not is_valid_stamp():
 		incorrect_stamped += 1

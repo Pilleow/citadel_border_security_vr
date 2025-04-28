@@ -77,7 +77,7 @@ func _try_grab(tracker_hand: XRPositionalTracker.TrackerHand) -> void:
 			XRPositionalTracker.TRACKER_HAND_LEFT else _right_hand
 	var result: GrabResult = controller.try_grab(0.2)
 	if result.grabbable != null:
-		print("grab\n" + str(controller) + "\n" + str(hand) + "\n" + str(result.grabbable) + "\n" + str(result.grab_point))
+		#print("grab\n" + str(controller) + "\n" + str(hand) + "\n" + str(result.grabbable) + "\n" + str(result.grab_point))
 		hand.global_transform = result.grab_point.global_transform
 		hand.translate_object_local(controller.grab_offset)
 		result.grabbable.grab(hand)

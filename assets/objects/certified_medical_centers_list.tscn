@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr3rflym50fh2"]
+[gd_scene load_steps=10 format=3 uid="uid://cr3rflym50fh2"]
 
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_mg4bu"]
 [ext_resource type="SystemFont" uid="uid://xdaxvye2k4cw" path="res://assets/fonts/desk_font.tres" id="2_36afu"]
+[ext_resource type="Texture2D" uid="uid://cqo5m5o30x7sp" path="res://assets/graphics/textures/paper.png" id="2_dx4l4"]
 [ext_resource type="PackedScene" uid="uid://dwlo1co6lvvoe" path="res://assets/objects/stamps/nhd_stamp.tscn" id="3_mg4bu"]
 [ext_resource type="PackedScene" uid="uid://wrlhytva4m50" path="res://assets/objects/stamps/ccc_stamp.tscn" id="4_mg4bu"]
 [ext_resource type="PackedScene" uid="uid://di0pbeqjtb34s" path="res://assets/objects/stamps/mdtf_stamp.tscn" id="5_mg4bu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tx45"]
 albedo_color = Color(1, 0.96, 0.9, 1)
+albedo_texture = ExtResource("2_dx4l4")
+uv1_scale = Vector3(1.4, 2.555, 2.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ktsy1"]
 material = SubResource("StandardMaterial3D_7tx45")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://pgsw4ye8uj82"]
+[gd_scene load_steps=9 format=3 uid="uid://pgsw4ye8uj82"]
 
 [ext_resource type="Script" uid="uid://sg24kpmdbtf7" path="res://assets/objects/entry_card.gd" id="1_4h3gr"]
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_h4fnl"]
+[ext_resource type="Texture2D" uid="uid://cqo5m5o30x7sp" path="res://assets/graphics/textures/paper.png" id="3_k5rh3"]
 [ext_resource type="SystemFont" uid="uid://brpvs6pyjhxfg" path="res://assets/fonts/entry_card_font.tres" id="3_nkdrl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4h3gr"]
@@ -9,6 +10,8 @@ size = Vector3(0.12, 0.01, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4fnl"]
 albedo_color = Color(0.88, 0.870613, 0.7392, 1)
+albedo_texture = ExtResource("3_k5rh3")
+uv1_scale = Vector3(1.965, 2.43, 1.065)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4h3gr"]
 material = SubResource("StandardMaterial3D_h4fnl")

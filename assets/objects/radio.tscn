@@ -1,11 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://basern0qyghsp"]
+[gd_scene load_steps=15 format=3 uid="uid://basern0qyghsp"]
 
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_3k27n"]
 [ext_resource type="Script" uid="uid://cm2yxktugrlce" path="res://assets/objects/radio.gd" id="1_hqep5"]
 [ext_resource type="AudioStream" uid="uid://bcksegsqe34wt" path="res://assets/sounds/music/portal_radio.mp3" id="3_5btcb"]
+[ext_resource type="Texture2D" uid="uid://dpmoj6pfet56s" path="res://assets/graphics/textures/plastic.jpg" id="4_mf8bl"]
+[ext_resource type="Texture2D" uid="uid://kqqv6tglbror" path="res://assets/graphics/textures/metal.jpg" id="5_c5dmk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40r0r"]
 albedo_color = Color(0.62, 0.81, 1, 1)
+albedo_texture = ExtResource("4_mf8bl")
+metallic = 1.0
+roughness = 0.7
+uv1_scale = Vector3(7.375, 2.885, 2.65)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6lnih"]
 material = SubResource("StandardMaterial3D_40r0r")
@@ -13,7 +19,9 @@ size = Vector3(0.2, 0.125, 0.06)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lnih"]
 albedo_color = Color(0.312073, 0.349462, 0.418963, 1)
+albedo_texture = ExtResource("4_mf8bl")
 metallic = 0.5
+uv1_scale = Vector3(1.835, 1.77, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_40r0r"]
 material = SubResource("StandardMaterial3D_6lnih")
@@ -26,7 +34,13 @@ radial_segments = 8
 material = SubResource("StandardMaterial3D_6lnih")
 size = Vector3(0.05, 0.02, 0.005)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l06ps"]
+albedo_texture = ExtResource("5_c5dmk")
+metallic = 1.0
+roughness = 0.6
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_3k27n"]
+material = SubResource("StandardMaterial3D_l06ps")
 top_radius = 0.003
 bottom_radius = 0.001
 height = 0.2

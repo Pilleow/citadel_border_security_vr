@@ -1,18 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkkhwd6ahlwry"]
+[gd_scene load_steps=14 format=3 uid="uid://bkkhwd6ahlwry"]
 
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_4gioy"]
 [ext_resource type="Script" uid="uid://dkgjmic8cmr04" path="res://assets/objects/stamp.gd" id="1_5mon6"]
+[ext_resource type="Texture2D" uid="uid://kqqv6tglbror" path="res://assets/graphics/textures/metal.jpg" id="3_h88bk"]
 [ext_resource type="AudioStream" uid="uid://gxerie88t1pa" path="res://assets/sounds/sfx/stamp.mp3" id="3_sqck4"]
+[ext_resource type="Texture2D" uid="uid://clphboysatf74" path="res://assets/graphics/textures/woodlight.jpg" id="4_ryhmt"]
+[ext_resource type="SystemFont" uid="uid://brpvs6pyjhxfg" path="res://assets/fonts/entry_card_font.tres" id="6_ogx3m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gioy"]
 albedo_color = Color(0.576, 0.5884, 0.6, 1)
+metallic = 1.0
+metallic_texture = ExtResource("3_h88bk")
+roughness = 0.3
+uv1_scale = Vector3(3, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5mon6"]
 material = SubResource("StandardMaterial3D_4gioy")
 size = Vector3(0.06, 0.02, 0.18)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mon6"]
-albedo_color = Color(1, 0.34, 0.34, 1)
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("4_ryhmt")
+uv1_scale = Vector3(1, 4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4gioy"]
 material = SubResource("StandardMaterial3D_5mon6")
@@ -28,16 +37,6 @@ size = Vector3(0.03, 0.03, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqck4"]
 size = Vector3(0.04, 0.02, 0.09)
-
-[sub_resource type="SystemFont" id="SystemFont_sqck4"]
-font_names = PackedStringArray("Silkscreen")
-subpixel_positioning = 0
-oversampling = 3.0
-
-[sub_resource type="SystemFont" id="SystemFont_h88bk"]
-font_names = PackedStringArray("Silkscreen")
-subpixel_positioning = 0
-oversampling = 3.0
 
 [node name="Stamp" type="Node3D"]
 script = ExtResource("1_5mon6")
@@ -58,10 +57,12 @@ mesh = SubResource("CylinderMesh_4gioy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
 shape = SubResource("BoxShape3D_4gioy")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Pickup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.058326, 0)
+visible = false
 shape = SubResource("BoxShape3D_5mon6")
 
 [node name="StampArea" type="Area3D" parent="Pickup"]
@@ -81,21 +82,19 @@ max_db = -3.0
 
 [node name="Denied" type="Label3D" parent="Pickup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.011, 0)
-visible = false
 pixel_size = 0.0005
 modulate = Color(0.92, 0, 0, 0.784314)
 text = "DENIED"
-font = SubResource("SystemFont_sqck4")
+font = ExtResource("6_ogx3m")
 font_size = 70
 outline_size = 0
 
 [node name="Accepted" type="Label3D" parent="Pickup"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, -0.011, 0)
-visible = false
 pixel_size = 0.0005
 modulate = Color(0.147333, 0.68, 0, 0.784314)
 text = "ACCEPTED"
-font = SubResource("SystemFont_h88bk")
+font = ExtResource("6_ogx3m")
 font_size = 60
 outline_size = 0
 

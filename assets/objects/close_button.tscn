@@ -1,20 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxoyvalw4xd7d"]
+[gd_scene load_steps=16 format=3 uid="uid://bxoyvalw4xd7d"]
 
 [ext_resource type="Script" uid="uid://brujdkcoaq6pd" path="res://assets/objects/close_button.gd" id="1_e3ilb"]
 [ext_resource type="AudioStream" uid="uid://cjw536k7351au" path="res://assets/sounds/sfx/button_press.mp3" id="2_8ucsi"]
+[ext_resource type="Texture2D" uid="uid://kqqv6tglbror" path="res://assets/graphics/textures/metal.jpg" id="2_bfjri"]
 [ext_resource type="AudioStream" uid="uid://drism7dqgb1cy" path="res://assets/sounds/sfx/alarm.mp3" id="3_heafo"]
 [ext_resource type="AudioStream" uid="uid://cgshohu2w4l18" path="res://assets/sounds/sfx/metal_door_rattling.mp3" id="4_sa00q"]
 [ext_resource type="AudioStream" uid="uid://dmovp8eg2emhr" path="res://assets/sounds/sfx/metal_door_slam.mp3" id="5_sid4u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7y0c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sid4u"]
 albedo_color = Color(0.277528, 0.277528, 0.277528, 1)
+albedo_texture = ExtResource("2_bfjri")
 
 [sub_resource type="BoxMesh" id="BoxMesh_e7y0c"]
-material = SubResource("StandardMaterial3D_e7y0c")
+material = SubResource("StandardMaterial3D_sid4u")
 size = Vector3(0.1, 0.03, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ilb"]
 albedo_color = Color(0.75, 0, 0, 1)
+metallic = 1.0
+metallic_texture = ExtResource("2_bfjri")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8ucsi"]
 material = SubResource("StandardMaterial3D_e3ilb")
@@ -27,11 +31,11 @@ radial_segments = 16
 height = 0.03
 radius = 0.03
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ucsi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfjri"]
 albedo_color = Color(0.7, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_heafo"]
-material = SubResource("StandardMaterial3D_8ucsi")
+material = SubResource("StandardMaterial3D_bfjri")
 flip_faces = true
 top_radius = 0.04
 bottom_radius = 0.03

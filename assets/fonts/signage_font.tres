@@ -1,0 +1,6 @@
+[gd_resource type="SystemFont" format=3 uid="uid://h45posnn10o2"]
+
+[resource]
+font_names = PackedStringArray("Arial")
+font_weight = 800
+oversampling = 4.0

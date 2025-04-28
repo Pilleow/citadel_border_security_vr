@@ -1,20 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dja0cxaotj1ml"]
+[gd_scene load_steps=11 format=3 uid="uid://dja0cxaotj1ml"]
 
 [ext_resource type="Script" uid="uid://duf84t4u3r0la" path="res://assets/objects/medical_check.gd" id="1_ccmxn"]
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="2_ccmxn"]
 [ext_resource type="SystemFont" uid="uid://dvj57828q8e1h" path="res://assets/fonts/medical_font.tres" id="3_ccmxn"]
+[ext_resource type="Texture2D" uid="uid://cqo5m5o30x7sp" path="res://assets/graphics/textures/paper.png" id="3_snsh3"]
 [ext_resource type="PackedScene" uid="uid://dwlo1co6lvvoe" path="res://assets/objects/stamps/nhd_stamp.tscn" id="4_7gxhq"]
 [ext_resource type="PackedScene" uid="uid://wrlhytva4m50" path="res://assets/objects/stamps/ccc_stamp.tscn" id="4_ccmxn"]
 [ext_resource type="PackedScene" uid="uid://di0pbeqjtb34s" path="res://assets/objects/stamps/mdtf_stamp.tscn" id="5_d7v3n"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4h3gr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrluu"]
 size = Vector3(0.21, 0.01, 0.14)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4fnl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765sh"]
 albedo_color = Color(0.88, 0.870613, 0.7392, 1)
+albedo_texture = ExtResource("3_snsh3")
+uv1_scale = Vector3(2.1, 1.81, 1.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_v16ne"]
-material = SubResource("StandardMaterial3D_h4fnl")
+material = SubResource("StandardMaterial3D_765sh")
 size = Vector3(0.21, 0.01, 0.14)
 
 [node name="MedicalCheck" type="Node3D"]
@@ -38,7 +41,7 @@ transform = Transform3D(6.48487e-08, 0.258819, -0.965926, -7.31306e-08, -0.96592
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22251e-05, 0)
-shape = SubResource("BoxShape3D_4h3gr")
+shape = SubResource("BoxShape3D_hrluu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pickup"]
 mesh = SubResource("BoxMesh_v16ne")
@@ -157,7 +160,7 @@ visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Pickup/MedicalCheckDocument"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22251e-05, 0)
-shape = SubResource("BoxShape3D_4h3gr")
+shape = SubResource("BoxShape3D_hrluu")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 

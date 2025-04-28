@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccwuqi2opi6cs"]
+[gd_scene load_steps=13 format=3 uid="uid://ccwuqi2opi6cs"]
 
 [ext_resource type="Script" uid="uid://cvfosi3lyt3xa" path="res://assets/objects/phone.gd" id="1_1pef3"]
 [ext_resource type="PackedScene" uid="uid://fsl2l8gnxce7" path="res://assets/items/pickup.tscn" id="1_5ns4y"]
+[ext_resource type="Texture2D" uid="uid://dpmoj6pfet56s" path="res://assets/graphics/textures/plastic.jpg" id="2_lvd5d"]
 [ext_resource type="AudioStream" uid="uid://bmq1irlpqrnhr" path="res://assets/sounds/phone/on_level_1.wav" id="3_ykdt5"]
 [ext_resource type="AudioStream" uid="uid://c61j6nijbhnd8" path="res://assets/sounds/sfx/phone_ring.mp3" id="4_35qjl"]
 [ext_resource type="AudioStream" uid="uid://hnhkh82h0ma3" path="res://assets/sounds/sfx/phone_dock.mp3" id="5_ykdt5"]
@@ -9,9 +10,14 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6j7s"]
 albedo_color = Color(0.3948, 0.64708, 0.84, 1)
+albedo_texture = ExtResource("2_lvd5d")
+uv1_scale = Vector3(3, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ns4y"]
 albedo_color = Color(0.282, 0.4622, 0.6, 1)
+albedo_texture = ExtResource("2_lvd5d")
+metallic = 1.0
+uv1_scale = Vector3(2.5, 2, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ns4y"]
 size = Vector3(0.05, 0.0186689, 0.144)

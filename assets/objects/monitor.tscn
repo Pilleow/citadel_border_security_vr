@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://0m8renml81df"]
+[gd_scene load_steps=14 format=3 uid="uid://0m8renml81df"]
 
 [ext_resource type="Script" uid="uid://cubttoamablca" path="res://assets/objects/monitor.gd" id="1_odvi0"]
+[ext_resource type="Texture2D" uid="uid://dpmoj6pfet56s" path="res://assets/graphics/textures/plastic.jpg" id="2_5xseo"]
 [ext_resource type="AudioStream" uid="uid://bm36xykuft3u0" path="res://assets/sounds/sfx/computer_click/computer_click-01.mp3" id="2_ksr2p"]
+[ext_resource type="Texture2D" uid="uid://31fv5p3ybfq8" path="res://assets/graphics/textures/crt.jpg" id="3_5xseo"]
 [ext_resource type="AudioStream" uid="uid://rph721udlijt" path="res://assets/sounds/sfx/computer_click/computer_click-02.mp3" id="3_7llpm"]
 [ext_resource type="AudioStream" uid="uid://ccfj8yxrxg8th" path="res://assets/sounds/sfx/computer_click/computer_click-03.mp3" id="4_5xseo"]
 [ext_resource type="AudioStream" uid="uid://ogxym8t2elku" path="res://assets/sounds/sfx/computer_click/computer_click-04.mp3" id="5_f08il"]
@@ -9,20 +11,23 @@
 [ext_resource type="AudioStream" uid="uid://c1fnn5taiv4rr" path="res://assets/sounds/sfx/computer_click/computer_click-06.mp3" id="7_ibiwf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o1mu"]
+albedo_texture = ExtResource("2_5xseo")
+metallic = 0.65
+roughness = 0.7
+uv1_scale = Vector3(5.455, 5.17, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odvi0"]
 albedo_color = Color(0.204853, 0.261282, 0.174463, 1)
+albedo_texture = ExtResource("3_5xseo")
+roughness = 0.3
 emission_enabled = true
 emission = Color(0.08138, 0.13, 0.0728, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_witof"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hik06"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ftfl"]
+clearcoat = 0.8
+clearcoat_roughness = 0.0
+uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_uxwr0"]
-material = SubResource("StandardMaterial3D_5ftfl")
+material = SubResource("StandardMaterial3D_6o1mu")
 top_radius = 0.1
 bottom_radius = 0.35
 height = 0.15
@@ -58,31 +63,31 @@ material = SubResource("StandardMaterial3D_odvi0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.333499, 0.302081)
 operation = 2
 size = Vector3(0.750977, 0.1522, 0.038)
-material = SubResource("StandardMaterial3D_witof")
+material = SubResource("StandardMaterial3D_6o1mu")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.34, -0.16)
 operation = 2
 size = Vector3(0.7, 0.221582, 0.6)
-material = SubResource("StandardMaterial3D_hik06")
+material = SubResource("StandardMaterial3D_6o1mu")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -0.34, -0.16)
 operation = 2
 size = Vector3(0.7, 0.221582, 0.6)
-material = SubResource("StandardMaterial3D_hik06")
+material = SubResource("StandardMaterial3D_6o1mu")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(-4.30473e-08, 0.984808, -0.173648, -1, -4.37114e-08, 0, -7.5904e-09, 0.173648, 0.984808, -0.34, -0.102, -0.155)
 operation = 2
 size = Vector3(1.24941, 0.221582, 0.6)
-material = SubResource("StandardMaterial3D_hik06")
+material = SubResource("StandardMaterial3D_6o1mu")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(-4.30473e-08, 0.984808, 0.173648, -1, -4.37114e-08, 0, 7.5904e-09, -0.173648, 0.984808, 0.34, -0.102, -0.155)
 operation = 2
 size = Vector3(1.24941, 0.221582, 0.6)
-material = SubResource("StandardMaterial3D_hik06")
+material = SubResource("StandardMaterial3D_6o1mu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.307149, -0.0377423)

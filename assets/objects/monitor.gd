@@ -20,7 +20,7 @@ func update_text():
 			label.text += label_final_text[len(label.text)]
 			if label.text.ends_with("\n"):
 				num_of_newlines += 1
-				if num_of_newlines > 20:
+				if num_of_newlines > 15:
 					var new_lb_txt: Array = label.text.split("\n")
 					var new_fn_txt: Array = label_final_text.split("\n")
 					new_lb_txt.remove_at(0)
